@@ -1,0 +1,52 @@
+1--> Single Number
+given an array which consits of all duplicate elements except one
+
+arr=[4,1,2,1,2]
+
+we can use XOR in this case because XOR of same no gives 0   2^2=0 or 3^3=0
+CODE---->   def singleNumber(arr):
+                res=0
+                for i in arr:
+                  res=res^i
+                return res
+                 
+  TC-->O(n)
+  SC-->O(1)
+  
+  
+2-->Reverse bits
+given a binary no we need to reverse the number
+for example n=001101    after reversing    n=101100
+
+in this we can start checking for 1 in n and then right shift and perform or with the result
+
+---->(n>>i)&1
+CODE:
+def revBits(num):
+  res=0
+  for i in range(32):
+      if(n<<i)&1:
+          res=res|1<<(31-i)
+         
+         
+ 3-->Single number 2
+ given array consits all 3 duplicates except one number which is present only once
+ 
+ in this problem we need to takecare of each bit whether it is set or not for the no we want for example if we have arr=[3,3,3,2]
+ in this 1st of all 3 are set but 2's is 0 so if we count the 1st bit for all element in arr we get 3 1's which means multiple of 3 thus req bit is 0
+ 
+ def singleNumber2(arr):
+  res=0
+  for i in range(32):
+    sum=0
+    temp=1<<i
+    for j in range(len(arr)):
+      if(arr[i]&temp):
+        sum+=1
+    if sum%3!=0:
+      res=res|temp
+   return res
+   
+   TC-->O(n)
+   SC-->O(1)
+      
