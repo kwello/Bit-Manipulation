@@ -1,0 +1,24 @@
+Given an array which is sorted and rotated 
+we need to find out how many times it is sorted
+
+arr: [11,12,15,18,2,5,6,8]
+
+approach 1 --> find the index of min element in the array i.e is 2-->index 4
+thus it is rotated 4 time TC->O(n)
+
+approach 2 --> Binary search
+
+if we look at array then 2 is only element which is smaller than its left and right element
+thus we use this 
+
+l=0 r=len(arr)-1
+while l<=r:
+  m=l+(r-l)//2
+  if a[m]<a[(m+1)%n] and a[m]<a[(m+n-1)%n]:
+    return m
+  elif a[l]<=a[m]:
+    l=m+1
+  elif a[l]>=a[m]:
+    r=m-1
+    
+ TC-->O(logn)
