@@ -27,3 +27,50 @@ while l<=r:
     r=m-1
     
  TC-->O(logn)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+FIND AN ELEMENT IN A ROTATED SORTED ARRAY:
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+You are given a target value to search. If found in the array return its index, otherwise return -1.
+You may assume no duplicate exists in the array.
+Your algorithm's runtime complexity must be in the order of O(log n).
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+
+def count(a,n):
+    l=0 
+    r=len(a)-1
+    while l<=r:
+      m=l+(r-l)//2
+      if a[l]<a[r]:
+          return l
+      
+      if a[m]<a[(m+1)%n] and a[m]<a[(m+n-1)%n]:
+        return m
+        
+      elif a[l]<=a[m]:
+        l=m+1
+        
+      elif a[m]<=a[r]:
+        r=m-1
+        
+def bs(a,l,r,t):
+    while l<=r:
+        m=l+(r-l)//2
+        if a[m]==t:
+            return m
+        elif a[m]<t:
+            l=m+1
+        else:
+            r=m-1
+    return -1
+        
+arr=[11,12,15,18,2,5,6,8]
+a=count(arr,len(arr))
+t=18
+if bs(arr,0,a-1,t)==-1 and bs(arr,a,len(arr)-1,t)==-1:
+    print(-1)
+elif bs(arr,0,a-1,t)==-1:
+    print(bs(arr,a,len(arr)-1,t))
+else:
+    print(bs(arr,0,a-1,t))
