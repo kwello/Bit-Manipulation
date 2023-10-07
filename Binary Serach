@@ -74,3 +74,31 @@ elif bs(arr,0,a-1,t)==-1:
     print(bs(arr,a,len(arr)-1,t))
 else:
     print(bs(arr,0,a-1,t))
+
+
+--------------------------------------------------
+
+lower bound -> smallest index such that aa[ind]>=x
+
+
+def lowerBound(arr: [int], n: int, x: int) -> int:
+    # Write your code here
+    low=0
+    high=n-1
+    ans=n
+
+    while low<=high:
+
+        mid = (low + high)//2
+
+        if arr[mid]>=x:
+            ans=mid
+            high=mid-1
+        else:
+            low=mid+1
+    return and
+
+--------------------------------------------------------
+
+upper bound
+
